@@ -29,7 +29,7 @@ public class Agency extends BaseEntity {
     private String representativeName;
 
     @Builder
-    public Agency(String name, String location, String foundingDate, String representativeName) {
+    protected Agency(String name, String location, String foundingDate, String representativeName) {
         this.name = name;
         this.location = location;
         this.foundingDate = foundingDate;
