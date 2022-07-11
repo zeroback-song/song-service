@@ -5,6 +5,7 @@ import com.song.songv1.api.domain.artist.ActivityType;
 import com.song.songv1.api.domain.artist.Artist;
 import com.song.songv1.api.domain.artist.Gender;
 import com.song.songv1.api.domain.common.Nationality;
+import com.song.songv1.api.repository.artist.ArtistRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

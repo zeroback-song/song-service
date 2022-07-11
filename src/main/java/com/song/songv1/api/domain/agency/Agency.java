@@ -3,12 +3,14 @@ package com.song.songv1.api.domain.agency;
 import com.song.songv1.api.domain.common.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Agency extends BaseEntity {
 
