@@ -1,18 +1,26 @@
-package com.song.songv1.api.repository;
+package com.song.songv1.api.service.album;
 
 import com.song.songv1.api.domain.album.Album;
 import com.song.songv1.api.domain.album.Genre;
 import com.song.songv1.api.domain.song.Song;
+import com.song.songv1.api.dto.album.AlbumResponse;
 import com.song.songv1.api.repository.album.AlbumRepository;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class AlbumRepositoryTest {
+class AlbumServiceImplTest {
 
+    @Autowired
+    private AlbumService albumService;
     @Autowired
     private AlbumRepository albumRepository;
 
@@ -22,13 +30,12 @@ class AlbumRepositoryTest {
     }
 
     @Test
-    @DisplayName("")
-    void createAlbumWithSongs() {
+    void findAlbumById() {
 
         // given
         Song song1 = Song.builder()
                 .isTitle(true)
-                .name("Tomboy3")
+                .name("Tomboy4")
                 .lyrics("가나다라마바사")
                 .lyricWriter("소연")
                 .songWriter("소연")
@@ -57,13 +64,13 @@ class AlbumRepositoryTest {
 
         album.addSong(song1);
         album.addSong(song2);
-
-
-        // when
         Album savedAlbum = albumRepository.save(album);
 
-        // then
-        assertEquals(2, savedAlbum.getSongList().size());
-    }
+        // when
+        AlbumResponse findAlbum = albumRepository.findAlbumById(savedAlbum.getId());
 
+        // then
+        assertEquals(savedAlbum.getName(), findAlbum.getName());
+        assertEquals(savedAlbum.getSongList().get(0).getName(), song1.getName());
+    }
 }

@@ -3,11 +3,13 @@ package com.song.songv1.api.domain.song;
 import com.song.songv1.api.domain.album.Album;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Song {
 
